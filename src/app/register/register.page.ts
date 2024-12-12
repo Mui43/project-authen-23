@@ -15,7 +15,10 @@ export class RegisterPage implements OnInit {
   txtusername:any;
   txtpassword:any;
 
-  constructor(public dataapi: DataapiService,public route:Router) {
+  constructor(
+    public dataapi: DataapiService,
+    public route: Router
+  ) {
 
   }
 
@@ -27,7 +30,7 @@ export class RegisterPage implements OnInit {
       name: this.txtname,
       email: this.txtemail,
       username: this.txtusername,
-      password: this.txtpassword
+      password: this.txtpassword,
     }
     this.dataapi.registerUser(data).subscribe({
       next: (res:any) => {
@@ -36,6 +39,7 @@ export class RegisterPage implements OnInit {
      },
      error: (error) => {
       console.log(error);
+      alert("Register failed" + error.message);
      }
     });
   }
